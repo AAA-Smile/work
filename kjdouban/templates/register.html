@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="电影数据分析系统"/>
+    <meta name="author" content=""/>
+    <title>用户注册 - 电影数据分析系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-animation .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(17, 153, 142, 0.1);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 280px;
+            height: 280px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            bottom: -90px;
+            left: -90px;
+            animation-delay: 4s;
+        }
+
+        .circle:nth-child(3) {
+            width: 140px;
+            height: 140px;
+            top: 30%;
+            left: 20%;
+            animation-delay: 8s;
+        }
+
+        .circle:nth-child(4) {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: 30%;
+            animation-delay: 12s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .register-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .register-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .card-header h3 {
+            color: white;
+            font-weight: 700;
+            font-size: 26px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header .fa-user-plus {
+            font-size: 32px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .card-body {
+            padding: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #11998e;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(17, 153, 142, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(17, 153, 142, 0.45);
+        }
+
+        .btn-register:active {
+            transform: translateY(-1px);
+        }
+
+        .card-footer {
+            padding: 22px 35px;
+            background: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .card-footer a {
+            color: #11998e;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card-footer a:hover {
+            color: #38ef7d;
+            text-decoration: underline;
+        }
+
+        .card-footer p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .icon-wrapper {
+            position: relative;
+        }
+
+        .icon-wrapper i {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .form-group input:focus + i,
+        .icon-wrapper:focus-within i {
+            color: #11998e;
+        }
+
+        .card-footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #11998e;
+            transition: width 0.3s ease;
+        }
+
+        .card-footer a:hover::after {
+            width: 100%;
+        }
+
+        .password-hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    
+    <div class="register-container">
+        <div class="register-card">
+            <div class="card-header">
+                <h3>
+                    <i class="fas fa-user-plus"></i>
+                    创建新账户
+                </h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/register">
+                    <div class="form-group">
+                        <label for="inputUsername">用户名</label>
+                        <div class="icon-wrapper">
+                            <input type="text" id="inputUsername" name="username" placeholder="请输入用户名" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">密码</label>
+                        <div class="icon-wrapper">
+                            <input type="password" id="inputPassword" name="password" placeholder="请输入密码" required>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="password-hint">
+                            <i class="fas fa-info-circle"></i>
+                            密码至少需要6位
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPasswordConfirm">确认密码</label>
+                        <div class="icon-wrapper">
+                            <input type="password" id="inputPasswordConfirm" name="passwordCheked" placeholder="请再次输入密码" required>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-register">
+                        <i class="fas fa-user-plus"></i>立即注册
+                    </button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <p>已有账号? <a href="/login">去登录</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('inputPassword');
+            const confirmInput = document.getElementById('inputPasswordConfirm');
+            
+            confirmInput.addEventListener('input', function() {
+                const password = passwordInput.value;
+                const confirm = confirmInput.value;
+                
+                if (password && confirm && password !== confirm) {
+                    confirmInput.style.borderColor = '#e53935';
+                } else {
+                    confirmInput.style.borderColor = '#e0e0e0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

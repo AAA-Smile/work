@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}操作表信息{% endblock %}
+{% block stylecontent %}
+<link href="/static/css/styles.css" rel="stylesheet"/>
+<style>
+    /* 表格自适应宽度 */
+    #datatablesSimple {
+        width: 100%;
+        table-layout: auto;
+    }
+
+    /* 表头自适应 */
+    #datatablesSimple th {
+        white-space: nowrap;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    /* 表格内容上下居中 */
+    #datatablesSimple td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    /* 图像单元格样式调整 */
+    #datatablesSimple td img {
+        object-fit: cover;
+        height: 100px;
+        width: auto;
+        max-width: 100px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            电影数据表
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>电影名</th>
+                    <th>海报</th>
+                    <th>评分</th>
+                    <th>导演</th>
+                    <th>演员</th>
+                    <th>语言</th>
+                    <th>时长</th>
+                    <th>上映时间</th>
+                    <th>类型</th>
+                    <th>制片国家</th>
+                    <th>短评数</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in tablelist %}
+                <tr>
+                    <td>{{ item[0] }}</td>
+                    <td style="text-decoration: underline">
+                        <a style="color: #000;" href="/search/{{ item[0] }}">
+                            {{ item[3] }}
+                        </a>
+                    </td>
+                    <td style="text-align: center;width: 120px">
+                        <a target="_blank" href="{{ item[4] }}">
+                            <img style="width: 80px; height: 110px; object-fit: cover;" 
+                                 src="{{ item[6] }}" 
+                                 alt="{{ item[3] }}"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2780%27 height=%27110%27 viewBox=%270 0 80 110%27%3E%3Crect fill=%27%23e8e8e8%27 width=%2780%27 height=%27110%27/%3E%3Ctext fill=%27%23999%27 font-family=%27Arial%27 font-size=%2712%27 x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27%3E{{ item[3] | truncate(8) }}%3C/text%3E%3C/svg%3E';">
+                        </a>
+                    </td>
+                    <td><span class="text-primary">{{ item[2] }}分</span></td>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[5] }}</td>
+                    <td>{{ item[10] }}</td>
+                    <td>{{ item[12] }}</td>
+                    <td>{{ item[11] }}</td>
+                    <td>{{ item[8] }}</td>
+                    <td>{{ item[9] }}</td>
+                    <td>{{ item[13] }} 条</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

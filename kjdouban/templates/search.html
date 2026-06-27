@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block title %}搜索信息{% endblock %}
+{% block stylecontent %}
+<link href="/static/css/styles.css" rel="stylesheet"/>
+<style>
+    .movie-card {
+        display: flex;
+        align-items: flex-start;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .movie-poster {
+        width: 120px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+    .movie-info {
+        flex: 1;
+        min-width: 0;
+    }
+    .movie-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
+    }
+    .movie-rating {
+        color: #e53935;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+    .movie-year {
+        color: #666;
+        font-size: 14px;
+    }
+    .movie-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+    .meta-tag {
+        background: #f0f0f0;
+        color: #666;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    .movie-desc {
+        color: #888;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .movie-stars {
+        display: flex;
+        gap: 15px;
+        font-size: 13px;
+    }
+    .star-item {
+        display: flex;
+        align-items: center;
+    }
+    .star-bar {
+        width: 60px;
+        height: 6px;
+        background: #eee;
+        border-radius: 3px;
+        margin-left: 8px;
+        overflow: hidden;
+    }
+    .star-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #ffc107, #ff9800);
+        border-radius: 3px;
+    }
+    .no-result {
+        text-align: center;
+        padding: 60px 0;
+        color: #999;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container-fluid px-4">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"></li>
+    </ol>
+    <form style="margin-top: 15px; margin-bottom: 30px" method="post" action="/search/0" class="form-inline">
+        <div class="form-group mx-sm-3 mb-2" style="flex: 1; max-width: 600px;">
+            <input name="searchIpt" type="text" class="form-control" id="inputPassword2"
+                   placeholder="请输入电影名关键字" style="width: 100%; padding: 10px 15px;">
+        </div>
+        <button type="submit" style="margin-left: 15px" class="btn btn-primary mb-2">搜索</button>
+    </form>
+    
+    {% if data %}
+        {% for item in data %}
+        <div class="movie-card">
+            {% if item[6] %}
+            <img src="{{ item[6] }}" class="movie-poster" alt="{{ item[3] }}" 
+                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%27160%27 viewBox=%270 0 120 160%27%3E%3Crect fill=%27%23f5f5f5%27 width=%27120%27 height=%27160%27/%3E%3Ctext fill=%27%23ccc%27 font-family=%27Arial%27 font-size=%2714%27 x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27%3E暂无海报%3C/text%3E%3C/svg%3E';">
+            {% else %}
+            <img class="movie-poster" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 120 160'%3E%3Crect fill='%23f5f5f5' width='120' height='160'/%3E%3Ctext fill='%23ccc' font-family='Arial' font-size='14' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3E暂无海报%3C/text%3E%3C/svg%3E" alt="暂无海报">
+            {% endif %}
+            
+            <div class="movie-info">
+                <div class="movie-title">
+                    {{ item[3] }}
+                    <span class="movie-rating">{{ item[2] }}分</span>
+                    <span class="movie-year">{{ item[7] }}年</span>
+                </div>
+                
+                <div class="movie-meta">
+                    {% if item[8] %}
+                        {% for genre in item[8] %}
+                        <span class="meta-tag">{{ genre }}</span>
+                        {% endfor %}
+                    {% endif %}
+                    {% if item[9] %}
+                        {% for region in item[9] %}
+                        <span class="meta-tag">{{ region }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+                {% if item[1] or item[5] %}
+                <div class="movie-meta">
+                    {% if item[1] %}
+                    <span class="meta-tag" style="background: #e3f2fd; color: #1976d2;">导演: {{ item[1] | join(', ') }}</span>
+                    {% endif %}
+                    {% if item[5] %}
+                    <span class="meta-tag" style="background: #f3e5f5; color: #7b1fa2;">主演: {{ item[5] | join(', ') }}</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                {% if item[15] %}
+                <p class="movie-desc">{{ item[15] }}</p>
+                {% endif %}
+                
+                {% if item[14] %}
+                <div class="movie-stars">
+                    {% for star in item[14] %}
+                    {% set parts = star.split(':') %}
+                    {% if parts|length == 2 %}
+                    <div class="star-item">
+                        <span>{{ parts[0] }}</span>
+                        <div class="star-bar">
+                            <div class="star-fill" style="width: {{ parts[1] }}"></div>
+                        </div>
+                        <span style="margin-left: 4px; color: #666; font-size: 12px;">{{ parts[1] }}</span>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-result">
+            <i class="fas fa-search" style="font-size: 48px; margin-bottom: 15px; opacity: 0.3;"></i>
+            <p>未找到相关电影</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block scriptcontent %}
+{% endblock %}
