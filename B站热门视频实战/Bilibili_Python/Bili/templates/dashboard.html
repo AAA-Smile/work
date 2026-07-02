@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B站热门视频数据仪表盘</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts-wordcloud/2.0.0/echarts-wordcloud.min.js"></script>
+    <style>
+        .chart-box { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .chart-box h4 { margin-bottom: 15px; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <h2 class="text-center mb-4">🎬 B站综合热门视频分析</h2>
+
+        <!-- 1. Top10 表格 -->
+        <div class="row">
+            <div class="col-12 chart-box">
+                <h4>📊 各项指标 Top10 视频</h4>
+                <ul class="nav nav-tabs" id="topTabs" role="tablist">
+                    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#play" type="button">播放量</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#like" type="button">点赞</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#favorite" type="button">收藏</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#coin" type="button">投币</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#reply" type="button">评论</button></li>
+                </ul>
+                <div class="tab-content mt-2" id="topTabContent"></div>
+            </div>
+        </div>
+
+        <!-- 2. 时长环形图 + 3. 气泡图 同行 -->
+        <div class="row">
+            <div class="col-md-4 chart-box">
+                <h4>⏱ 视频时长占比</h4>
+                <div id="durationPie" style="height:350px;"></div>
+            </div>
+            <div class="col-md-8 chart-box">
+                <h4>🏷 标签频率气泡图</h4>
+                <div id="tagBubble" style="height:350px;"></div>
+            </div>
+        </div>
+
+        <!-- 4. 标签共现热力图 -->
+        <div class="row">
+            <div class="col-12 chart-box">
+                <h4>🔗 标签共现热力图 (前50高频标签)</h4>
+                <div id="coHeatmap" style="height:600px;"></div>
+            </div>
+        </div>
+
+        <!-- 5. 时长分组与互动指标组合图 -->
+        <div class="row">
+            <div class="col-12 chart-box">
+                <h4>📈 时长分组 vs 互动指标</h4>
+                <div id="durationStats" style="height:450px;"></div>
+            </div>
+        </div>
+
+        <!-- 6. 高播放词云 + 7. 高互动词云 同行 -->
+        <div class="row">
+            <div class="col-md-6 chart-box">
+                <h4>☁ 高播放视频标签词云</h4>
+                <div id="wcPlay" style="height:350px;"></div>
+            </div>
+            <div class="col-md-6 chart-box">
+                <h4>☁ 高互动视频标签词云</h4>
+                <div id="wcInteraction" style="height:350px;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 工具函数：fetch API
+        async function fetchJSON(url) {
+            let resp = await fetch(url);
+            return await resp.json();
+        }
+
+        // 1. Top10 表格
+        async function renderTopTable() {
+            let data = await fetchJSON('/api/top_videos');
+            let tabs = '';
+            for (let metric of ['play', 'like', 'favorite', 'coin', 'reply']) {
+                let table = `<table class="table table-striped"><thead><tr><th>排名</th><th>标题</th><th>UP主</th><th>${metric}</th></tr></thead><tbody>`;
+                data[metric].forEach((item, idx) => {
+                    table += `<tr><td>${idx+1}</td><td>${item.title}</td><td>${item.author_name}</td><td>${item.value.toLocaleString()}</td></tr>`;
+                });
+                table += '</tbody></table>';
+                let active = metric === 'play' ? 'show active' : '';
+                tabs += `<div class="tab-pane fade ${active}" id="${metric}">${table}</div>`;
+            }
+            document.getElementById('topTabContent').innerHTML = tabs;
+        }
+
+        // 2. 时长占比环形图
+        async function renderDurationPie() {
+            let data = await fetchJSON('/api/duration_ratio');
+            let chart = echarts.init(document.getElementById('durationPie'));
+            chart.setOption({
+                tooltip: { trigger: 'item' },
+                legend: { orient: 'vertical', left: 'left' },
+                series: [{
+                    name: '时长占比',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    data: data.map(d => ({name: d.name, value: d.value})),
+                    label: { formatter: '{b}\n{d}%' }
+                }]
+            });
+        }
+
+        // 3. 标签气泡图
+        async function renderTagBubble() {
+            let data = await fetchJSON('/api/tag_frequency');
+            let chart = echarts.init(document.getElementById('tagBubble'));
+            let maxVal = Math.max(...data.map(d => d.value));
+            chart.setOption({
+                tooltip: { formatter: p => `${p.name}: ${p.value} 次` },
+                xAxis: { show: false }, yAxis: { show: false },
+                series: [{
+                    type: 'scatter',
+                    symbolSize: d => Math.sqrt(d[2]) * 3,
+                    data: data.map(d => [Math.random(), Math.random(), d.value, d.name]),
+                    label: { show: true, formatter: p => p.value[3], fontSize: 10 },
+                    itemStyle: { opacity: 0.7 }
+                }]
+            });
+            // 注：ECharts 原生 scatter 不会物理碰撞，如需物理效果可保留之前的 D3 文件，这里为了统一使用 ECharts 简单气泡。
+        }
+
+        // 4. 标签共现热力图
+        async function renderCoHeatmap() {
+            let graph = await fetchJSON('/api/tag_cooccurrence');
+            let nodes = graph.nodes.map(n => n.name);
+            // 构建矩阵
+            let matrix = Array(nodes.length).fill().map(() => Array(nodes.length).fill(0));
+            graph.links.forEach(link => {
+                matrix[link.source][link.target] = link.value;
+                matrix[link.target][link.source] = link.value;
+            });
+            let chart = echarts.init(document.getElementById('coHeatmap'));
+            chart.setOption({
+                tooltip: {},
+                xAxis: { data: nodes, axisLabel: { rotate: 45, fontSize: 8 } },
+                yAxis: { data: nodes, axisLabel: { fontSize: 8 } },
+                visualMap: { min: 0, max: Math.max(...graph.links.map(l=>l.value)), calculable: true, orient: 'horizontal', left: 'center', bottom: 10 },
+                series: [{
+                    type: 'heatmap',
+                    data: graph.links.map(l => [l.source, l.target, l.value]),
+                    label: { show: false }
+                }]
+            });
+        }
+
+
+        // 5. 时长分组统计组合图
+        async function renderDurationStats() {
+            let data = await fetchJSON('/api/duration_stats');
+            let chart = echarts.init(document.getElementById('durationStats'));
+            chart.setOption({
+                legend: { data: ['平均播放量', '点赞率', '收藏率', '投币率', '评论率'] },
+                xAxis: { data: data.map(d => d.name) },
+                yAxis: [
+                    { type: 'value', name: '播放量' },
+                    { type: 'value', name: '比率' }
+                ],
+                series: [
+                    { name: '平均播放量', type: 'bar', data: data.map(d => d.avg_play), yAxisIndex: 0 },
+                    { name: '点赞率', type: 'line', data: data.map(d => d.avg_like_rate), yAxisIndex: 1 },
+                    { name: '收藏率', type: 'line', data: data.map(d => d.avg_fav_rate), yAxisIndex: 1 },
+                    { name: '投币率', type: 'line', data: data.map(d => d.avg_coin_rate), yAxisIndex: 1 },
+                    { name: '评论率', type: 'line', data: data.map(d => d.avg_reply_rate), yAxisIndex: 1 }
+                ]
+            });
+        }
+
+        // 6. 高播放词云
+        async function renderWCPlay() {
+            let data = await fetchJSON('/api/wordcloud_high_play');
+            let chart = echarts.init(document.getElementById('wcPlay'));
+            chart.setOption({
+                tooltip: {},
+                series: [{
+                    type: 'wordCloud',
+                    shape: 'circle',
+                    data: data,
+                    sizeRange: [12, 40],
+                    rotationRange: [-45, 45],
+                    textStyle: { fontFamily: 'Microsoft YaHei' }
+                }]
+            });
+        }
+
+        // 7. 高互动词云
+        async function renderWCInteraction() {
+            let data = await fetchJSON('/api/wordcloud_high_interaction');
+            let chart = echarts.init(document.getElementById('wcInteraction'));
+            chart.setOption({
+                tooltip: {},
+                series: [{
+                    type: 'wordCloud',
+                    shape: 'circle',
+                    data: data,
+                    sizeRange: [12, 40],
+                    rotationRange: [-45, 45],
+                    textStyle: { fontFamily: 'Microsoft YaHei' }
+                }]
+            });
+        }
+
+        // 初始化所有图表
+        window.onload = function() {
+            renderTopTable();
+            renderDurationPie();
+            renderTagBubble();
+            renderCoHeatmap();
+            renderDurationStats();
+            renderWCPlay();
+            renderWCInteraction();
+        };
+    </script>
+</body>
+</html>

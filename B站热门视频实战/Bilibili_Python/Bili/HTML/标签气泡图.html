@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签气泡图</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: "Microsoft YaHei", sans-serif; }
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // 数据占位符：脚本运行时会被替换为实际 JSON 数组
+        const data = [{"name": "搞笑", "value": 19}, {"name": "生活记录", "value": 8}, {"name": "原创", "value": 7}, {"name": "记录", "value": 6}, {"name": "三角洲行动", "value": 6}, {"name": "沙雕", "value": 6}, {"name": "娱乐", "value": 5}, {"name": "二次元", "value": 5}, {"name": "AI", "value": 4}, {"name": "音乐", "value": 4}, {"name": "动漫", "value": 4}, {"name": "游戏", "value": 3}, {"name": "miHoYo", "value": 3}, {"name": "手工", "value": 3}, {"name": "崩坏：星穹铁道", "value": 3}, {"name": "美食", "value": 3}, {"name": "记录我的美食日常", "value": 3}, {"name": "高能", "value": 3}, {"name": "搞笑小剧场", "value": 3}, {"name": "舌尖真探事务所", "value": 3}, {"name": "动画", "value": 3}, {"name": "空调", "value": 3}, {"name": "原神", "value": 3}, {"name": "抽象", "value": 3}, {"name": "米哈游", "value": 3}, {"name": "美食教程", "value": 3}, {"name": "鬼畜", "value": 3}];
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const radiusScale = d3.scaleSqrt()
+            .domain([0, d3.max(data, d => d.value)])
+            .range([10, 80]);
+
+        const customPastel = [
+            "#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6",
+            "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2", "#b3e2cd",
+            "#fdcdac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae",
+            "#f1e2cc", "#cccccc", "#d9d9d9"
+        ];
+        const colorScale = d3.scaleOrdinal(customPastel);
+
+        const nodes = data.map(d => ({
+            name: d.name,
+            value: d.value,
+            r: radiusScale(d.value),
+            color: colorScale(d.name)
+        }));
+
+        const svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const simulation = d3.forceSimulation(nodes)
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("charge", d3.forceManyBody().strength(5))
+            .force("collision", d3.forceCollide().radius(d => d.r + 2).iterations(3))
+            .on("tick", ticked);
+
+        const drag = d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended);
+
+        const node = svg.selectAll("circle")
+            .data(nodes)
+            .join("circle")
+            .attr("r", d => d.r)
+            .attr("fill", d => d.color)
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1.5)
+            .call(drag)
+            .on("mouseover", function(event, d) {
+                d3.select(".tooltip").remove();
+                d3.select("body").append("div")
+                    .attr("class", "tooltip")
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 20) + "px")
+                    .html(`<strong>${d.name}</strong><br>出现次数: ${d.value}`);
+            })
+            .on("mousemove", function(event) {
+                d3.select(".tooltip")
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 20) + "px");
+            })
+            .on("mouseout", function() {
+                d3.select(".tooltip").remove();
+            });
+
+        const text = svg.selectAll("text")
+            .data(nodes)
+            .join("text")
+            .text(d => d.name.length > 4 ? d.name.slice(0,4)+'..' : d.name)
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .attr("font-size", d => Math.min(d.r/2, 14))
+            .attr("fill", "#333")
+            .style("pointer-events", "none");
+
+        function ticked() {
+            node.attr("cx", d => d.x).attr("cy", d => d.y);
+            text.attr("x", d => d.x).attr("y", d => d.y);
+        }
+
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+    </script>
+</body>
+</html>

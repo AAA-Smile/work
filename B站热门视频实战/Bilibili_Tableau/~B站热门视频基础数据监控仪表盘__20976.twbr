@@ -1,0 +1,1962 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0603.1643                               -->
+<workbook original-version='18.1' source-build='2026.2.0 (20262.26.0603.1643)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <Extensions />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <VConnDownstreamExtractsWithWarnings />
+    <VizExtensions />
+    <_.fcp.VizExtensionsDupEncodingUUID.true...VizExtensionsDupEncodingUUID />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='bilibili_videos' inline='true' name='federated.0d5suz404wanjw12jooqq0kvha64' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='bilibili_videos' name='textscan.1x2igms0e3hhh61e23a7k1vy6xtd'>
+            <connection class='textscan' directory='D:/PythonProject/Bilibili/Bili/tools/Data' filename='bilibili_videos.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.1x2igms0e3hhh61e23a7k1vy6xtd' name='bilibili_videos.csv' table='[bilibili_videos#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='zh_CN' separator=','>
+              <column datatype='integer' name='id' ordinal='0' />
+              <column datatype='string' name='视频BV号（bvid）' ordinal='1' />
+              <column datatype='string' name='标题（title' ordinal='2' />
+              <column datatype='integer' name='播放量（play' ordinal='3' />
+              <column datatype='integer' name='点赞数（like）' ordinal='4' />
+              <column datatype='integer' name='收藏数（favorite）' ordinal='5' />
+              <column datatype='integer' name='投币数（coin）' ordinal='6' />
+              <column datatype='integer' name='评论数（reply）' ordinal='7' />
+              <column datatype='string' name='Up主名称（authon_name)' ordinal='8' />
+              <column datatype='integer' name='Up主UID（mid）' ordinal='9' />
+              <column datatype='integer' name='粉丝数（fans）' ordinal='10' />
+              <column datatype='string' name='标签（tags）' ordinal='11' />
+              <column datatype='integer' name='视频时长（秒）（durtion）' ordinal='12' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1x2igms0e3hhh61e23a7k1vy6xtd' name='author_name_number.csv' table='[author_name_number#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='zh_CN' separator=','>
+              <column datatype='string' name='作者' ordinal='0' />
+              <column datatype='integer' name='出现次数' ordinal='1' />
+            </columns>
+          </relation>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;zh_Hans_CN&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;¥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;zh_CN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[author_name_number.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;zh_Hans_CN&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;¥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;zh_CN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>视频BV号（bvid）</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[视频BV号（bvid）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>视频BV号（bvid）</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LZH_RCN' />
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>标题（title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[标题（title]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>标题（title</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LZH_RCN' />
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>播放量（play</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[播放量（play]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>播放量（play</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>点赞数（like）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[点赞数（like）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>点赞数（like）</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>收藏数（favorite）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[收藏数（favorite）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>收藏数（favorite）</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>投币数（coin）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[投币数（coin）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>投币数（coin）</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>评论数（reply）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[评论数（reply）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>评论数（reply）</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Up主名称（authon_name)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Up主名称（authon_name)]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>Up主名称（authon_name)</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LZH_RCN' />
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Up主UID（mid）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Up主UID（mid）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>Up主UID（mid）</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>粉丝数（fans）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[粉丝数（fans）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>粉丝数（fans）</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>标签（tags）</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[标签（tags）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>标签（tags）</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LZH_RCN' />
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>视频时长（秒）（durtion）</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[视频时长（秒）（durtion）]</local-name>
+            <parent-name>[bilibili_videos.csv]</parent-name>
+            <remote-alias>视频时长（秒）（durtion）</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>作者</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[作者]</local-name>
+            <parent-name>[author_name_number.csv]</parent-name>
+            <remote-alias>作者</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LZH_RCN' />
+            <object-id>[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>出现次数</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[出现次数]</local-name>
+            <parent-name>[author_name_number.csv]</parent-name>
+            <remote-alias>出现次数</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='投币率' datatype='real' name='[Calculation_0905741428256768]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[投币数（coin）]/[播放量（play]' />
+      </column>
+      <column caption='互动率' datatype='real' name='[Calculation_0905741431771141]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='([点赞数（like）]+2*[投币数（coin）]+1.5*[收藏数（favorite）]+[评论数（reply）])/[播放量（play]' />
+      </column>
+      <column caption='平均收藏率' datatype='real' name='[Calculation_0905741449003014]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([收藏数（favorite）])/sum([播放量（play])' />
+      </column>
+      <column caption='总播放量' datatype='integer' name='[Calculation_0905741449666567]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([播放量（play])' />
+      </column>
+      <column caption='播放排名' datatype='integer' name='[Calculation_2097611837607937]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RANK_UNIQUE(sum([播放量（play]),&apos;desc&apos;)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='点赞排名' datatype='integer' name='[Calculation_2097611839512578]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RANK_UNIQUE(sum([点赞数（like）]),&apos;desc&apos;)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='时长分组' datatype='string' name='[Calculation_2097611844481031]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [视频时长（秒）（durtion）] &lt; 300 THEN &apos;小于5分钟&apos;&#13;&#10;ELSEIF [视频时长（秒）（durtion）] &lt; 600 THEN &apos;5-10分钟&apos;&#13;&#10;ELSEIF [视频时长（秒）（durtion）] &lt; 1200 THEN &apos;10-20分钟&apos;&#13;&#10;ELSEIF [视频时长（秒）（durtion）] &lt; 1800 THEN &apos;20-30分钟&apos;&#13;&#10;ELSE &apos;大于30分钟&apos;&#13;&#10;END' />
+      </column>
+      <column aggregation='Sum' datatype='integer' name='[Up主UID（mid）]' role='dimension' type='ordinal' />
+      <column caption='Up主名称（authon name)' datatype='string' name='[Up主名称（authon_name)]' role='dimension' type='nominal' />
+      <column caption='author_name_number.csv' datatype='table' name='[__tableau_internal_object_id__].[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]' role='measure' type='quantitative' />
+      <column caption='bilibili_videos.csv' datatype='table' name='[__tableau_internal_object_id__].[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]' role='measure' type='quantitative' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='评论排名' datatype='integer' name='[投币排名 (复制)_2097611843125254]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RANK_UNIQUE(sum([投币数（coin）]),&apos;desc&apos;)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='投币数（Coin）' datatype='integer' name='[投币数（coin）]' role='measure' type='quantitative' />
+      <column caption='收藏率' datatype='real' name='[投币率 (复制)_0905741430390785]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[收藏数（favorite）]/[播放量（play]' />
+      </column>
+      <column caption='点赞率' datatype='real' name='[投币率 (复制)_0905741430947842]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[点赞数（like）]/[播放量（play]' />
+      </column>
+      <column caption='评论率' datatype='real' name='[投币率 (复制)_0905741431087108]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[评论数（reply）]/[播放量（play]' />
+      </column>
+      <column caption='投币排名' datatype='integer' name='[播放排名 (复制)_2097611842412549]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RANK_UNIQUE(sum([投币数（coin）]),&apos;desc&apos;)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='播放量（Play' datatype='integer' name='[播放量（play]' role='measure' type='quantitative' />
+      <column caption='收藏数（Favorite）' datatype='integer' name='[收藏数（favorite）]' role='measure' type='quantitative' />
+      <column caption='标签（Tags）' datatype='string' name='[标签（tags）]' role='dimension' type='nominal' />
+      <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+      <column caption='收藏排名' datatype='integer' name='[点赞排名 (复制)_2097611841536003]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RANK_UNIQUE(sum([收藏数（favorite）]),&apos;desc&apos;)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='点赞数（Like）' datatype='integer' name='[点赞数（like）]' role='measure' type='quantitative' />
+      <column caption='粉丝数（Fans）' datatype='integer' name='[粉丝数（fans）]' role='measure' type='quantitative' />
+      <column caption='视频时长（秒）（Durtion）' datatype='integer' name='[视频时长（秒）（durtion）]' role='measure' type='quantitative' />
+      <column caption='评论数（Reply）' datatype='integer' name='[评论数（reply）]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='zh_CN' class='hyper' dbname='Data/TableauTemp/#TableauTemp_1v2b7ww1gxeco41cvpdnc1vrqffj.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='07/01/2026 12:52:32 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='bilibili_videos.csv_83B08DADC130453CBC364A123F00272A' table='[Extract].[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]' type='table' />
+            <relation name='author_name_number.csv_B3A581648C7F4879A000276ADE4AF177' table='[Extract].[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]' type='table' />
+          </relation>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>视频BV号（bvid）</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[视频BV号（bvid）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>视频BV号（bvid）</remote-alias>
+              <ordinal>1</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LZH_RCN' />
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>标题（title</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[标题（title]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>标题（title</remote-alias>
+              <ordinal>2</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LZH_RCN' />
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>播放量（play</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[播放量（play]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>播放量（play</remote-alias>
+              <ordinal>3</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>点赞数（like）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[点赞数（like）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>点赞数（like）</remote-alias>
+              <ordinal>4</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>收藏数（favorite）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[收藏数（favorite）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>收藏数（favorite）</remote-alias>
+              <ordinal>5</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>投币数（coin）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[投币数（coin）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>投币数（coin）</remote-alias>
+              <ordinal>6</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>评论数（reply）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[评论数（reply）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>评论数（reply）</remote-alias>
+              <ordinal>7</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>102</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Up主名称（authon_name)</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Up主名称（authon_name)]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>Up主名称（authon_name)</remote-alias>
+              <ordinal>8</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>99</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LZH_RCN' />
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Up主UID（mid）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Up主UID（mid）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>Up主UID（mid）</remote-alias>
+              <ordinal>9</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>99</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>粉丝数（fans）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[粉丝数（fans）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>粉丝数（fans）</remote-alias>
+              <ordinal>10</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>103</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>标签（tags）</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[标签（tags）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>标签（tags）</remote-alias>
+              <ordinal>11</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>101</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LZH_RCN' />
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>视频时长（秒）（durtion）</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[视频时长（秒）（durtion）]</local-name>
+              <parent-name>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</parent-name>
+              <remote-alias>视频时长（秒）（durtion）</remote-alias>
+              <ordinal>12</ordinal>
+              <family>bilibili_videos.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>100</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>作者</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[作者]</local-name>
+              <parent-name>[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]</parent-name>
+              <remote-alias>作者</remote-alias>
+              <ordinal>13</ordinal>
+              <family>author_name_number.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LZH_RCN' />
+              <object-id>[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>出现次数</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[出现次数]</local-name>
+              <parent-name>[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]</parent-name>
+              <remote-alias>出现次数</remote-alias>
+              <ordinal>14</ordinal>
+              <family>author_name_number.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;中国&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='作者' />
+        <field-sort-custom-order field='出现次数' />
+      </field-sort-info>
+      <object-graph>
+        <objects>
+          <object caption='author_name_number.csv' id='author_name_number.csv_B3A581648C7F4879A000276ADE4AF177'>
+            <properties context=''>
+              <relation connection='textscan.1x2igms0e3hhh61e23a7k1vy6xtd' name='author_name_number.csv' table='[author_name_number#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='zh_CN' separator=','>
+                  <column datatype='string' name='作者' ordinal='0' />
+                  <column datatype='integer' name='出现次数' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='author_name_number.csv_B3A581648C7F4879A000276ADE4AF177' table='[Extract].[author_name_number.csv_B3A581648C7F4879A000276ADE4AF177]' type='table' />
+            </properties>
+          </object>
+          <object caption='bilibili_videos.csv' id='bilibili_videos.csv_83B08DADC130453CBC364A123F00272A'>
+            <properties context=''>
+              <relation connection='textscan.1x2igms0e3hhh61e23a7k1vy6xtd' name='bilibili_videos.csv' table='[bilibili_videos#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='zh_CN' separator=','>
+                  <column datatype='integer' name='id' ordinal='0' />
+                  <column datatype='string' name='视频BV号（bvid）' ordinal='1' />
+                  <column datatype='string' name='标题（title' ordinal='2' />
+                  <column datatype='integer' name='播放量（play' ordinal='3' />
+                  <column datatype='integer' name='点赞数（like）' ordinal='4' />
+                  <column datatype='integer' name='收藏数（favorite）' ordinal='5' />
+                  <column datatype='integer' name='投币数（coin）' ordinal='6' />
+                  <column datatype='integer' name='评论数（reply）' ordinal='7' />
+                  <column datatype='string' name='Up主名称（authon_name)' ordinal='8' />
+                  <column datatype='integer' name='Up主UID（mid）' ordinal='9' />
+                  <column datatype='integer' name='粉丝数（fans）' ordinal='10' />
+                  <column datatype='string' name='标签（tags）' ordinal='11' />
+                  <column datatype='integer' name='视频时长（秒）（durtion）' ordinal='12' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='bilibili_videos.csv_83B08DADC130453CBC364A123F00272A' table='[Extract].[bilibili_videos.csv_83B08DADC130453CBC364A123F00272A]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[Up主名称（authon_name)]' />
+              <expression op='[作者]' />
+            </expression>
+            <first-end-point object-id='bilibili_videos.csv_83B08DADC130453CBC364A123F00272A' />
+            <second-end-point object-id='author_name_number.csv_B3A581648C7F4879A000276ADE4AF177' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='互动率箱型图'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column caption='互动率' datatype='real' name='[Calculation_0905741431771141]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='([点赞数（like）]+2*[投币数（coin）]+1.5*[收藏数（favorite）]+[评论数（reply）])/[播放量（play]' />
+            </column>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_0905741431771141]' derivation='Sum' name='[sum:Calculation_0905741431771141:qk]' pivot='key' type='quantitative' />
+            <column caption='投币数（Coin）' datatype='integer' name='[投币数（coin）]' role='measure' type='quantitative' />
+            <column caption='播放量（Play' datatype='integer' name='[播放量（play]' role='measure' type='quantitative' />
+            <column caption='收藏数（Favorite）' datatype='integer' name='[收藏数（favorite）]' role='measure' type='quantitative' />
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+            <column caption='点赞数（Like）' datatype='integer' name='[点赞数（like）]' role='measure' type='quantitative' />
+            <column caption='评论数（Reply）' datatype='integer' name='[评论数（reply）]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <lod column='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:Calculation_0905741431771141:qk]' boxplot-mark-exclusion='true' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:Calculation_0905741431771141:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.25' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:Calculation_0905741431771141:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{8838C687-EAAE-4FC5-9510-018A6DFAB24A}' />
+    </worksheet>
+    <worksheet name='投币数top10柱状图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>投币数Top10</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[投币数（coin）]' derivation='Sum' name='[sum:投币数（coin）:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[播放排名 (复制)_2097611842412549]' derivation='User' name='[usr:播放排名 (复制)_2097611842412549:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' />
+            </column-instance>
+            <column caption='投币数（Coin）' datatype='integer' name='[投币数（coin）]' role='measure' type='quantitative' />
+            <column caption='投币排名' datatype='integer' name='[播放排名 (复制)_2097611842412549]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RANK_UNIQUE(sum([投币数（coin）]),&apos;desc&apos;)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0d5suz404wanjw12jooqq0kvha64].[usr:播放排名 (复制)_2097611842412549:qk:2]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:投币数（coin）:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0d5suz404wanjw12jooqq0kvha64].[usr:播放排名 (复制)_2097611842412549:qk:2]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:投币数（coin）:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' value='112' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:投币数（coin）:qk]' />
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:投币数（coin）:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]</rows>
+        <cols>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:投币数（coin）:qk]</cols>
+      </table>
+      <simple-id uuid='{2C7297BB-1BA8-4958-ACE1-8E6699F80A37}' />
+    </worksheet>
+    <worksheet name='播放量top10柱状图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>播放量Top10</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column caption='播放排名' datatype='integer' name='[Calculation_2097611837607937]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RANK_UNIQUE(sum([播放量（play]),&apos;desc&apos;)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[播放量（play]' derivation='Sum' name='[sum:播放量（play:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2097611837607937]' derivation='User' name='[usr:Calculation_2097611837607937:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' />
+            </column-instance>
+            <column caption='播放量（Play' datatype='integer' name='[播放量（play]' role='measure' type='quantitative' />
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0d5suz404wanjw12jooqq0kvha64].[usr:Calculation_2097611837607937:qk]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0d5suz404wanjw12jooqq0kvha64].[usr:Calculation_2097611837607937:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' scope='cols' value='false' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' value='188' />
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-color' scope='cols' value='#f2f2f249' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' />
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]</rows>
+        <cols>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]</cols>
+      </table>
+      <simple-id uuid='{130246D2-2A52-4885-BE5A-11D1AB57A0E8}' />
+    </worksheet>
+    <worksheet name='播放量箱型图'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[播放量（play]' derivation='Sum' name='[sum:播放量（play:qk]' pivot='key' type='quantitative' />
+            <column caption='播放量（Play' datatype='integer' name='[播放量（play]' role='measure' type='quantitative' />
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <lod column='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' boxplot-mark-exclusion='true' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.25' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{00482AA7-66A6-43AD-8C82-EE4D76CD08E4}' />
+    </worksheet>
+    <worksheet name='收藏数top10柱状图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>收藏数Top10</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[收藏数（favorite）]' derivation='Sum' name='[sum:收藏数（favorite）:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[点赞排名 (复制)_2097611841536003]' derivation='User' name='[usr:点赞排名 (复制)_2097611841536003:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' />
+            </column-instance>
+            <column caption='收藏数（Favorite）' datatype='integer' name='[收藏数（favorite）]' role='measure' type='quantitative' />
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+            <column caption='收藏排名' datatype='integer' name='[点赞排名 (复制)_2097611841536003]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RANK_UNIQUE(sum([收藏数（favorite）]),&apos;desc&apos;)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0d5suz404wanjw12jooqq0kvha64].[usr:点赞排名 (复制)_2097611841536003:qk:2]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:收藏数（favorite）:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0d5suz404wanjw12jooqq0kvha64].[usr:点赞排名 (复制)_2097611841536003:qk:2]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:收藏数（favorite）:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' value='120' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:收藏数（favorite）:qk]' />
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:收藏数（favorite）:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]</rows>
+        <cols>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:收藏数（favorite）:qk]</cols>
+      </table>
+      <simple-id uuid='{1D482CE5-64E3-426E-BD11-3DD00AD6F367}' />
+    </worksheet>
+    <worksheet name='点赞数top10柱状图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>点赞数Top10</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column caption='点赞排名' datatype='integer' name='[Calculation_2097611839512578]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RANK_UNIQUE(sum([点赞数（like）]),&apos;desc&apos;)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[点赞数（like）]' derivation='Sum' name='[sum:点赞数（like）:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2097611839512578]' derivation='User' name='[usr:Calculation_2097611839512578:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' ordering-type='Field' />
+            </column-instance>
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+            <column caption='点赞数（Like）' datatype='integer' name='[点赞数（like）]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0d5suz404wanjw12jooqq0kvha64].[usr:Calculation_2097611839512578:qk]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <slices>
+            <column>[federated.0d5suz404wanjw12jooqq0kvha64].[usr:Calculation_2097611839512578:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='180' />
+            <format attr='cell-h' value='80' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:点赞数（like）:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{A5E662D6-2945-41D2-8997-7C06CE7382DF}' />
+    </worksheet>
+    <worksheet name='热门视频100部作者频率饼图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>热门视频作者频率</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column-instance column='[作者]' derivation='None' name='[none:作者:nk]' pivot='key' type='nominal' />
+            <column-instance column='[出现次数]' derivation='Sum' name='[sum:出现次数:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[作者]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[出现次数]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='320' />
+            <format attr='cell-h' value='180' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <color column='[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]' />
+              <size column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]' />
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]' />
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-cull' value='false' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+        <mark-labels>
+          <mark-label id='0'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]</field>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Key725&quot;</value>
+                <value>2</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='-43' y='22' />
+          </mark-label>
+          <mark-label id='1'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]</field>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;崩坏星穹铁道&quot;</value>
+                <value>2</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='66' y='22' />
+          </mark-label>
+          <mark-label id='2'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]</field>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;央视农业&quot;</value>
+                <value>2</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='-44' y='-21' />
+          </mark-label>
+          <mark-label id='3'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]</field>
+                  <field>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;菜包豆本豆&quot;</value>
+                <value>2</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='64' y='-26' />
+          </mark-label>
+        </mark-labels>
+      </table>
+      <simple-id uuid='{BFC66BF1-A931-4AB8-B43D-AA763B1A6EE1}' />
+    </worksheet>
+    <worksheet name='热门视频时长占比环形图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>热门视频时长占比</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column caption='时长分组' datatype='string' name='[Calculation_2097611844481031]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [视频时长（秒）（durtion）] &lt; 300 THEN &apos;小于5分钟&apos;&#13;&#10;ELSEIF [视频时长（秒）（durtion）] &lt; 600 THEN &apos;5-10分钟&apos;&#13;&#10;ELSEIF [视频时长（秒）（durtion）] &lt; 1200 THEN &apos;10-20分钟&apos;&#13;&#10;ELSEIF [视频时长（秒）（durtion）] &lt; 1800 THEN &apos;20-30分钟&apos;&#13;&#10;ELSE &apos;大于30分钟&apos;&#13;&#10;END' />
+            </column>
+            <column-instance column='[Calculation_2097611844481031]' derivation='None' name='[none:Calculation_2097611844481031:nk]' pivot='key' type='nominal' />
+            <column-instance column='[视频时长（秒）（durtion）]' derivation='Count' name='[pcto:cnt:视频时长（秒）（durtion）:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column caption='视频时长（秒）（Durtion）' datatype='integer' name='[视频时长（秒）（durtion）]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0d5suz404wanjw12jooqq0kvha64].[pcto:cnt:视频时长（秒）（durtion）:qk]' value='p0%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='VizExtension' />
+            <add-in add-in-id='com.tableau.extension.radial' extension-url='https://tableau-extensions.tableauusercontent.com/radial/radial.html' extension-version='1.0.0' instance-id='D2F825B1B1CA44A1B41DD11AAAEBEC00'>
+              <instance-settings />
+              <type-settings>
+                <worksheet />
+              </type-settings>
+            </add-in>
+            <encodings>
+              <custom _.fcp.VizExtensionsDupEncodingUUID.true...encoding-id='{89624E1B-30F3-4FC2-99BE-00EFE3AE57D9}' column='[federated.0d5suz404wanjw12jooqq0kvha64].[none:Calculation_2097611844481031:nk]' custom-type-name='level' />
+              <custom _.fcp.VizExtensionsDupEncodingUUID.true...encoding-id='{4F62A1C4-80A2-429E-95C5-CEFE85C5AA18}' column='[federated.0d5suz404wanjw12jooqq0kvha64].[pcto:cnt:视频时长（秒）（durtion）:qk]' custom-type-name='angle' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{50064D25-003E-4F3D-A71D-2CD395B862FB}' />
+    </worksheet>
+    <worksheet name='评论数top10柱状图'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1'>评论数Top10</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='bilibili_videos' name='federated.0d5suz404wanjw12jooqq0kvha64' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d5suz404wanjw12jooqq0kvha64'>
+            <column-instance column='[标题（title]' derivation='None' name='[none:标题（title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[评论数（reply）]' derivation='Sum' name='[sum:评论数（reply）:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[投币排名 (复制)_2097611843125254]' derivation='User' name='[usr:投币排名 (复制)_2097611843125254:qk:1]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' />
+            </column-instance>
+            <column caption='评论排名' datatype='integer' name='[投币排名 (复制)_2097611843125254]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RANK_UNIQUE(sum([投币数（coin）]),&apos;desc&apos;)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='投币数（Coin）' datatype='integer' name='[投币数（coin）]' role='measure' type='quantitative' />
+            <column caption='标题（Title' datatype='string' name='[标题（title]' role='dimension' type='nominal' />
+            <column caption='评论数（Reply）' datatype='integer' name='[评论数（reply）]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0d5suz404wanjw12jooqq0kvha64].[usr:投币排名 (复制)_2097611843125254:qk:1]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:评论数（reply）:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0d5suz404wanjw12jooqq0kvha64].[usr:投币排名 (复制)_2097611843125254:qk:1]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:评论数（reply）:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]' value='124' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:评论数（reply）:qk]' />
+              <text column='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:评论数（reply）:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0d5suz404wanjw12jooqq0kvha64].[none:标题（title:nk]</rows>
+        <cols>[federated.0d5suz404wanjw12jooqq0kvha64].[sum:评论数（reply）:qk]</cols>
+      </table>
+      <simple-id uuid='{ED867860-859A-4A5F-AD8A-B9E1307CF6E5}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='B站热门视频基础数据监控'>
+      <style>
+        <style-rule element='dash-text'>
+          <format attr='font-family' value='微软雅黑' />
+          <format attr='font-size' value='10' />
+        </style-rule>
+      </style>
+      <size maxheight='2000' maxwidth='1300' minheight='2000' minwidth='1300' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='96700' id='7' param='horz' type-v2='layout-flow' w='98770' x='615' y='2900'>
+            <zone h='96700' id='5' type-v2='layout-basic' w='98770' x='615' y='2900'>
+              <zone h='26150' id='3' name='播放量top10柱状图' w='98770' x='615' y='24150'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='21250' id='10' name='热门视频100部作者频率饼图' w='48385' x='615' y='2900'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='0' />
+                </zone-style>
+              </zone>
+              <zone h='25500' id='13' name='点赞数top10柱状图' w='48308' x='615' y='50300'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='25500' id='15' name='收藏数top10柱状图' w='50462' x='48923' y='50300'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='23800' id='17' name='投币数top10柱状图' w='48308' x='615' y='75800'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='23800' id='19' name='评论数top10柱状图' w='50462' x='48923' y='75800'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='21250' id='20' name='热门视频时长占比环形图' w='50385' x='49000' y='2900'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='2500' id='21' type-v2='text' w='98770' x='615' y='400'>
+            <formatted-text>
+              <run bold='true' fontalignment='1' fontsize='15'>第xx周B站热门视频数据监控</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='2100' minheight='2100' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='25' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='99200' id='24' param='vert' type-v2='layout-flow' w='98770' x='615' y='400'>
+                <zone h='2500' id='21' type-v2='text' w='98770' x='615' y='400'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontsize='15'>第xx周B站热门视频数据监控</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='21250' id='10' is-fixed='true' name='热门视频100部作者频率饼图' w='48385' x='615' y='2900'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='21250' id='20' is-fixed='true' name='热门视频时长占比环形图' w='50385' x='49000' y='2900'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='26150' id='3' is-fixed='true' name='播放量top10柱状图' w='98770' x='615' y='24150'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='25500' id='13' is-fixed='true' name='点赞数top10柱状图' w='48308' x='615' y='50300'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='25500' id='15' is-fixed='true' name='收藏数top10柱状图' w='50462' x='48923' y='50300'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='23800' id='17' is-fixed='true' name='投币数top10柱状图' w='48308' x='615' y='75800'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='23800' id='19' is-fixed='true' name='评论数top10柱状图' w='50462' x='48923' y='75800'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{4D5D6C0B-E5A6-4247-B8BB-D42E27D03BA4}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='44'>
+    <window class='worksheet' name='播放量top10柱状图'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0d5suz404wanjw12jooqq0kvha64].[usr:Calculation_2097611837607937:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='0' param='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:播放量（play:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{6D614F6A-64A2-4447-BD8E-209EABAE5E21}' />
+    </window>
+    <window class='worksheet' name='热门视频100部作者频率饼图' tab-color='#4f779a'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0d5suz404wanjw12jooqq0kvha64].[none:作者:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:出现次数:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{8147DE43-B32F-4792-B1AD-70CDE79049CC}' />
+    </window>
+    <window class='worksheet' name='点赞数top10柱状图'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{02E5D743-946B-4411-AC1D-82C3F93798AF}' />
+    </window>
+    <window class='worksheet' name='收藏数top10柱状图'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:收藏数（favorite）:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{A65A83D5-0C95-4D16-A3B2-A3806CF96F01}' />
+    </window>
+    <window class='worksheet' name='投币数top10柱状图'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:投币数（coin）:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{A9A17983-90B2-4623-A231-81FDD675DD5F}' />
+    </window>
+    <window class='worksheet' name='评论数top10柱状图'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0d5suz404wanjw12jooqq0kvha64].[sum:评论数（reply）:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{8DBECCBC-3113-44FB-BD44-7E12CC86EB9A}' />
+    </window>
+    <window class='worksheet' name='热门视频时长占比环形图' tab-color='#4f779a'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2E0B4B93-0535-4F34-AFE0-FEE6C41BBDBA}' />
+    </window>
+    <window class='worksheet' name='互动率箱型图' tab-color='#4f779a'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A785CDF6-BFE8-4C04-9A18-92691BF0FA8D}' />
+    </window>
+    <window class='worksheet' name='播放量箱型图' tab-color='#4f779a'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F6B11741-86BB-473A-A85E-8AABE5F11EF2}' />
+    </window>
+    <window class='dashboard' maximized='true' name='B站热门视频基础数据监控' tab-color='#f66273'>
+      <viewpoints>
+        <viewpoint name='投币数top10柱状图'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='播放量top10柱状图'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='收藏数top10柱状图'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='点赞数top10柱状图'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='热门视频100部作者频率饼图'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='热门视频时长占比环形图' />
+        <viewpoint name='评论数top10柱状图'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{38B65907-D69D-4F53-A333-B9B2678BDA2F}' />
+    </window>
+  </windows>
+  <referenced-extensions>
+    <referenced-extension>
+      <manifest manifest-version='0.1'>
+        <worksheet-extension extension-version='1.0.0' id='com.tableau.extension.radial'>
+          <default-locale>en_US</default-locale>
+          <name resource-id='name' />
+          <description>A radial chart displays data in a circular format in which the total of all segment values add up to 100%, representing the whole. This visualization type creates donut charts, sunbursts, and fan charts, which are powerful means to summarize simple part-to-whole insights at a high level.</description>
+          <author email='github@tableau.com' name='Tableau' organization='Tableau' website='https://www.tableau.com/support' />
+          <min-api-version>1.12</min-api-version>
+          <source-location>
+            <url>https://tableau-extensions.tableauusercontent.com/radial/radial.html</url>
+          </source-location>
+          <icon />
+          <context-menu>
+            <configure-context-menu-item />
+          </context-menu>
+          <encoding id='level'>
+            <display-name resource-id='level-encoding'>Ring</display-name>
+            <role-spec>
+              <role-type>discrete-dimension</role-type>
+              <role-type>discrete-measure</role-type>
+            </role-spec>
+            <fields max-count='5' />
+            <encoding-icon token='level-radial' />
+            <tooltip resource-id='level-tooltip'>Radial Ring - Drag up to five dimensions here.</tooltip>
+          </encoding>
+          <encoding id='angle'>
+            <display-name resource-id='angle-encoding'>Angle</display-name>
+            <role-spec>
+              <role-type>continuous-measure</role-type>
+            </role-spec>
+            <fields max-count='1' />
+            <encoding-icon token='wedge' />
+            <tooltip resource-id='angle-tooltip'>Segment Angle - Drag a measure here.</tooltip>
+          </encoding>
+          <encoding id='center'>
+            <display-name resource-id='center-encoding'>Center</display-name>
+            <role-spec>
+              <role-type>continuous-measure</role-type>
+              <role-type>discrete-measure</role-type>
+            </role-spec>
+            <fields max-count='1' />
+            <encoding-icon token='exclamation' />
+            <tooltip resource-id='center-tooltip'>Center Label - Drag a measure here</tooltip>
+          </encoding>
+        </worksheet-extension>
+        <resources>
+          <resource id='angle-encoding'>
+            <text locale='de_DE'>Winkel</text>
+            <text locale='en_GB'>Angle</text>
+            <text locale='en_US'>Angle</text>
+            <text locale='es_ES'>Ángulo</text>
+            <text locale='fr_CA'>Angle</text>
+            <text locale='fr_FR'>Angle</text>
+            <text locale='it_IT'>Angolo</text>
+            <text locale='ja_JP'>角度</text>
+            <text locale='ko_KR'>각도</text>
+            <text locale='nl_NL'>Hoek</text>
+            <text locale='pt_BR'>Ângulo</text>
+            <text locale='sv_SE'>Vinkel</text>
+            <text locale='th_TH'>มุม</text>
+            <text locale='zh_CN'>角度</text>
+            <text locale='zh_TW'>角度</text>
+          </resource>
+          <resource id='angle-tooltip'>
+            <text locale='de_DE'>Segmentwinkel - Kennzahl hierher ziehen.</text>
+            <text locale='en_GB'>Segment Angle - Drag a measure here.</text>
+            <text locale='en_US'>Segment Angle - Drag a measure here.</text>
+            <text locale='es_ES'>Ángulo del segmento - Arrastre la medida aquí.</text>
+            <text locale='fr_CA'>Angle du segment - Faites glisser la mesure ici.</text>
+            <text locale='fr_FR'>Angle du segment - Faites glisser la mesure ici.</text>
+            <text locale='it_IT'>Angolo del segmento - Trascina la misura qui.</text>
+            <text locale='ja_JP'>セグメントの角度 - メジャーを使用.</text>
+            <text locale='ko_KR'>세그먼트 각도 - 측정값 사용.</text>
+            <text locale='nl_NL'>Segmenthoek - Sleep meetwaarde hierheen.</text>
+            <text locale='pt_BR'>Ângulo do segmento - Arraste a medida aqui.</text>
+            <text locale='sv_SE'>Segmentvinkel - Dra mått hit.</text>
+            <text locale='th_TH'>มุมของส่วน - ใช้ค่าการวัด.</text>
+            <text locale='zh_CN'>分段角度 - 使用度量.</text>
+            <text locale='zh_TW'>分段角度 - 使用測量值.</text>
+          </resource>
+          <resource id='center-encoding'>
+            <text locale='de_DE'>Zentrum</text>
+            <text locale='en_GB'>Centre</text>
+            <text locale='en_US'>Center</text>
+            <text locale='es_ES'>Centro</text>
+            <text locale='fr_CA'>Centre</text>
+            <text locale='fr_FR'>Centre</text>
+            <text locale='it_IT'>Centro</text>
+            <text locale='ja_JP'>中心</text>
+            <text locale='ko_KR'>중심</text>
+            <text locale='nl_NL'>Centrum</text>
+            <text locale='pt_BR'>Centro</text>
+            <text locale='sv_SE'>Centrum</text>
+            <text locale='th_TH'>ศูนย์กลาง</text>
+            <text locale='zh_CN'>中心</text>
+            <text locale='zh_TW'>中心</text>
+          </resource>
+          <resource id='center-tooltip'>
+            <text locale='de_DE'>Text zentrieren - Kennzahl hierher ziehen.</text>
+            <text locale='en_GB'>Centre Label - Drag a measure here.</text>
+            <text locale='en_US'>Center Label - Drag a measure here.</text>
+            <text locale='es_ES'>Texto central - Arrastre la medida aquí.</text>
+            <text locale='fr_CA'>Texte central - Faites glisser la mesure ici.</text>
+            <text locale='fr_FR'>Texte central - Faites glisser la mesure ici.</text>
+            <text locale='it_IT'>Testo centrale - Trascina la misura qui.</text>
+            <text locale='ja_JP'>中央のテキスト - メジャーを使用.</text>
+            <text locale='ko_KR'>중앙 텍스트 - 측정값 사용.</text>
+            <text locale='nl_NL'>Tekst in het midden - Sleep meetwaarde hierheen.</text>
+            <text locale='pt_BR'>Texto central - Arraste a medida aqui</text>
+            <text locale='sv_SE'>Tekst in het midden - Sleep meetwaarde hierheen.</text>
+            <text locale='th_TH'>ข้อความตรงกลาง - ใช้ค่าการวัด.</text>
+            <text locale='zh_CN'>中心文字 - 使用度量.</text>
+            <text locale='zh_TW'>中心文字 - 使用測量值.</text>
+          </resource>
+          <resource id='level-encoding'>
+            <text locale='de_DE'>Hierarchieebene</text>
+            <text locale='en_GB'>Ring</text>
+            <text locale='en_US'>Ring</text>
+            <text locale='es_ES'>Anillo</text>
+            <text locale='fr_CA'>Anneau</text>
+            <text locale='fr_FR'>Anneau</text>
+            <text locale='it_IT'>Anello</text>
+            <text locale='ja_JP'>階層レベル</text>
+            <text locale='ko_KR'>원</text>
+            <text locale='nl_NL'>Ring</text>
+            <text locale='pt_BR'>Anel</text>
+            <text locale='sv_SE'>nivå</text>
+            <text locale='th_TH'>วงแหวน</text>
+            <text locale='zh_CN'>环</text>
+            <text locale='zh_TW'>環</text>
+          </resource>
+          <resource id='level-tooltip'>
+            <text locale='de_DE'>Hierarchieebene - Ziehen Sie hier bis zu fünf Dimensionen.</text>
+            <text locale='en_GB'>Radial Ring - Drag up to five dimensions here.</text>
+            <text locale='en_US'>Radial Ring - Drag up to five dimensions here.</text>
+            <text locale='es_ES'>Anillo - Arrastre aquí hasta cinco dimensiones.</text>
+            <text locale='fr_CA'>Anneau - Faites glisser jusqu&apos;à cinq dimensions ici.</text>
+            <text locale='fr_FR'>Anneau - Faites glisser jusqu&apos;à cinq dimensions ici.</text>
+            <text locale='it_IT'>Anello - Trascina qui fino a cinque dimensioni.</text>
+            <text locale='ja_JP'>階層レベル - 最大5つのディメンション.</text>
+            <text locale='ko_KR'>원 - 최대 5개의 디멘션.</text>
+            <text locale='nl_NL'>Ring - Sleep hier maximaal vijf dimensies naartoe.</text>
+            <text locale='pt_BR'>Anel - Arraste até cinco dimensões aqui.</text>
+            <text locale='sv_SE'>nivå - Dra upp till fem dimensioner här.</text>
+            <text locale='th_TH'>วงแหวน - &#9;มิติสูงสุดห้ามิติ.</text>
+            <text locale='zh_CN'>环 - 最多五个维度.</text>
+            <text locale='zh_TW'>環 - 最多五個維度.</text>
+          </resource>
+          <resource id='name'>
+            <text locale='en_US'>Radial</text>
+            <text locale='ja_JP'>サンバーストチャート</text>
+            <text locale='zh_CN'>旭日圖</text>
+          </resource>
+        </resources>
+      </manifest>
+      <referenced-views>
+        <referenced-view instances='1' viewId='fake sheet name' />
+        <referenced-view instances='1' viewId='热门视频时长占比环形图' />
+      </referenced-views>
+    </referenced-extension>
+    <referenced-extension>
+      <manifest manifest-version='0.1'>
+        <worksheet-extension extension-version='1.0.0' id='com.tableau.extension.table'>
+          <default-locale>en_US</default-locale>
+          <name resource-id='name' />
+          <description>A rich table experience that allows you to build data tables directly in Tableau. Includes conditional formatting, search, and Viz in Cell functionality.</description>
+          <author email='github@tableau.com' name='Tableau' organization='Tableau' website='https://www.tableau.com/support' />
+          <min-api-version>1.12</min-api-version>
+          <source-location>
+            <url>https://tableau-extensions.tableauusercontent.com/table/table.html</url>
+          </source-location>
+          <icon />
+          <context-menu>
+            <configure-context-menu-item />
+          </context-menu>
+        </worksheet-extension>
+        <resources>
+          <resource id='name'>
+            <text locale='en_US'>Tableau Table</text>
+          </resource>
+        </resources>
+      </manifest>
+      <referenced-views>
+        <referenced-view instances='1' viewId='fake sheet name' />
+      </referenced-views>
+    </referenced-extension>
+  </referenced-extensions>
+</workbook>
